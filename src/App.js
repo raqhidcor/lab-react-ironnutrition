@@ -17,6 +17,13 @@ function App() {
     setFoodList(searchedFood)
   }
 
+  const deleteFoodAndUpdate = (selectedFood)=>{
+    const deletedFood = foodList.filter(food=>{
+      return selectedFood !== food.name;
+    })
+    setFoodList(deletedFood)
+  }
+
   return (
     <div className="App">
       <Divider>Add Food Entry</Divider>
@@ -31,7 +38,7 @@ function App() {
           console.log(foodList);
           return (
             <div key={index}>
-              <FoodBox foods={foods} />
+              <FoodBox foods={foods} deleteFoodAndUpdate ={deleteFoodAndUpdate}/>
             </div>
           );
         })}

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const AddFoodForm = (props) => {
 
-    const {foodList, setFood} = props
+    const {foodList, setFood,setNotSearchFoodList} = props
 
     const [inputName, setInputName] = useState('')
     const [inputImage, setInputImage] = useState('')
@@ -21,6 +21,7 @@ const AddFoodForm = (props) => {
             servings: inputServings,
         });
         setFood(foodListCopy)
+        setNotSearchFoodList (foodListCopy)
     }
 
     return (

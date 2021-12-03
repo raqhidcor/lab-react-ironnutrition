@@ -1,20 +1,29 @@
 import "./App.css";
 import React, { useState } from "react";
-import { Row, Divider, Button } from "antd";
+import { Row, Divider} from "antd";
 import foods from "./foods.json";
 import FoodBox from "./Components/FoodBox/FoodBox";
 import AddFoodForm from "./Components/AddFoodForm/AddFoodForm";
+import SearchBar from "./Components/SearchBar/SearchBar";
 
 function App() {
   const [foodList, setFoodList] = useState(foods);
+  const [notSearchFoodList, setNotSearchFoodList] = useState(foods);
+
+  const searchFood = (searchText) => {
+    const searchedFood = notSearchFoodList.filter(food =>{
+      return food.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) 
+    })
+    setFoodList(searchedFood)
+  }
 
   return (
     <div className="App">
       <Divider>Add Food Entry</Divider>
-      <AddFoodForm foodList={foodList} setFood={setFoodList} />
+      <AddFoodForm foodList={foodList} setFood={setFoodList} setNotSearchFoodList={setNotSearchFoodList}/>
 
-      {/* Display Search component here */}
-
+      <Divider> <SearchBar searchFood={searchFood}/> </Divider>
+          
       <Divider>Food List</Divider>
 
       <Row style={{ width: "100%", justifyContent: "center" }}>

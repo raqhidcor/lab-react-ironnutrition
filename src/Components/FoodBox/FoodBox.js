@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Col, Divider, Button } from "antd";
+import { Card, Col, Button } from "antd";
 
 function FoodBox(props) {
     const {name,calories,image,servings} = props.foods
